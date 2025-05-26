@@ -8,11 +8,11 @@ useSeoMeta({
   title: 'Connect Wallet | Damp'
 })
 
-const config = useRuntimeConfig();
+const config = useRuntimeConfig().public;
 const router = useRouter();
 
 // const config = useRuntimeConfig();
-const project_id: string = config.public.reown_project_id;
+const project_id: string = config.reown_project_id;
 if (!project_id) {
   throw new Error('PROJECT ID IS NOT FOUND, PLEASE INCLUDE PROJECT ID.');
 }

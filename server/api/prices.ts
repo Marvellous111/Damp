@@ -45,7 +45,10 @@ export default defineEventHandler(async (event) => {
 
     try {
       // Make the POST request to the OKX DEX API
-      const response = await axios.post('https://web3.okx.com/api/v5/dex/market/price', body, { headers });
+      const response = await axios.post('https://web3.okx.com/api/v5/dex/market/price',
+        body,
+        { headers, timeout: 10000 }
+      );
       console.log(response.data)
       return response.data.data.price;
     } catch (error) {
@@ -55,12 +58,12 @@ export default defineEventHandler(async (event) => {
   };
 
   // Fetch prices for ETH and SOL
-  const ethPrice = await getPrice('1', '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2');
+  //const ethPrice = await getPrice('1', '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2');
   const solPrice = await getPrice('501', 'So11111111111111111111111111111111111111111');
 
   // Return the prices
   return {
-    eth: ethPrice,
+    //eth: ethPrice,
     sol: solPrice,
   };
 });
