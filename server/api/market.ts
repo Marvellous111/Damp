@@ -58,7 +58,13 @@ export default defineEventHandler(async (event) => {
 
     try {
       // Make the GET request to the OKX DEX API
-      const response = await axios.get(`https://web3.okx.com${requestPath}`, { headers });
+      const response = await axios.get(`https://web3.okx.com${requestPath}`, 
+        {
+          headers,
+          timeout: 10000
+        }
+      );
+      console.log(response.data);
       return response.data.data;
     } catch (error) {
       console.error('Error fetching candlesticks:', error);
