@@ -1,0 +1,54 @@
+html, body {
+  // margin-top: 21px;
+  // margin-bottom: 21px;
+  // margin-left: 15px;
+  // margin: 28px 15px;
+  margin: 0;
+  background-color: #121212;
+  color: #FFFFFF;
+}
+
+@font-face {
+  font-family: 'HostGrotesk-Regular';
+  src: url(../fonts/HostGrotesk-Regular.woff2);
+  transition: selection 0.1s ease-in;
+}
+
+.hostgr-regular {
+  font-family: 'HostGrotesk-Regular';
+}
+
+.hostgr-regular::selection {
+  background-color: #FFFFFF;
+  color: #121212;
+}
+
+@font-face {
+  font-family: 'HostGrotesk-Medium';
+  src: url(../fonts/HostGrotesk-Medium.woff2);
+  transition: selection 0.1s ease-in;
+}
+
+.hostgr-medium {
+  font-family: 'HostGrotesk-Medium';
+}
+
+.hostgr-medium::selection {
+  background-color: #FFFFFF;
+  color: #121212;
+}
+
+@font-face {
+  font-family: 'HostGrotesk-Bold';
+  src: url(../fonts/HostGrotesk-Bold.woff2);
+  transition: selection 0.1s ease-in;
+}
+
+.hostgr-bold {
+  font-family: 'HostGrotesk-Bold';
+}
+
+.hostgr-bold::selection {
+  background-color: #FFFFFF;
+  color: #121212;
+}
