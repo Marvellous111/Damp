@@ -19,15 +19,15 @@ export default defineEventHandler(async (event) => {
   const endpoint = '/api/v5/dex/market/candles';
   const paramsEth = {
     chainIndex: '1', // Ethereum
-    tokenContractAddress: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2', // ETH
-    bar: '1m',
-    limit: '100',
+    tokenContractAddress: '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', // ETH
+    // bar: '1m',
+    // limit: '100',
   };
   const paramsSol = {
-    chainIndex: '501', // Solana
-    tokenContractAddress: 'So11111111111111111111111111111111111111111', // SOL
-    bar: '1m',
-    limit: '100',
+    chainIndex: '66', // Solana
+    tokenContractAddress: '0x382bb369d343125bfb2117af9c149795c6c65c50', // SOL
+    // bar: '1m',
+    // limit: '100',
   };
 
   // Function to generate the OK-ACCESS-SIGN signature
