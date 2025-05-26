@@ -58,7 +58,7 @@ export default defineEventHandler(async (event) => {
   };
 
   // Fetch prices for ETH and SOL
-  const ethPrice = await getPrice('1', '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2');
+  const ethPrice = await getPrice('1', '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee');
   const solPrice = await getPrice('501', '11111111111111111111111111111111111111111');
 
   // Return the prices
