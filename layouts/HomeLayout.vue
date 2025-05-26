@@ -49,10 +49,10 @@ onMounted(async () => {
 })
 
 const getprices = async () => {
-  const response = await $fetch('/api/prices');
+  const response = await $fetch('/api/market');
   console.log("response is: ", response);
-  eth_price_data = response?.eth;
-  sol_price_data = response?.sol;
+  // eth_price_data = response?.eth;
+  // sol_price_data = response?.sol;
 }
 
 </script>
