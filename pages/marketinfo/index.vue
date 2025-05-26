@@ -12,14 +12,6 @@ useSeoMeta({
 var marketData = ref<[{}] | null>(null);
 const error = ref<string | null>(null);
 
-async function fetchMarketData() {
-  try {
-    marketData.value = await fetch('/api/market');
-  } catch (err) {
-    error.value = 'Failed to fetch market data';
-    console.error(err)
-  }
-}
 
 </script>
 

@@ -1,7 +1,7 @@
 import { defineEventHandler } from 'h3';
 
 export default defineEventHandler(async () => {
-  const config = useRuntimeConfig();
+  const config = useRuntimeConfig().server;
   const timestamp = new Date().toISOString();
   const requestPath = '';
   const params = {instType: 'SPOT'};
@@ -14,8 +14,7 @@ export default defineEventHandler(async () => {
     'OK-ACCESS-KEY': config.okxApiKey,
     'OK-ACCESS-SIGN': signature,
     'OK-ACCESS-TIMESTAMP': timestamp,
-    'OK-ACCESS-PASSPHRASE': '',
-    'OK-ACCESS-PROJECT': '',
+    'OK-ACCESS-PASSPHRASE': config.okxPassphrase,
   };
 
   try {

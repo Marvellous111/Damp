@@ -7,9 +7,9 @@ const { open, close } = useAppKit();
 
 const router = useRouter();
 
-const connectevmwallet = async () => {
+const connectevmwallet = () => {
   try {
-    await open();
+    open();
     router.push('/aichat/');
   }catch (err) {
     console.error(err)

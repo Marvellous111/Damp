@@ -13,9 +13,9 @@ const router = useRouter();
 
 // const config = useRuntimeConfig();
 const project_id: string = config.public.reown_project_id;
-// if (!project_id) {
-//   throw new Error('PROJECT ID IS NOT FOUND, PLEASE INCLUDE PROJECT ID.');
-// }
+if (!project_id) {
+  throw new Error('PROJECT ID IS NOT FOUND, PLEASE INCLUDE PROJECT ID.');
+}
 const networks: [AppKitNetwork, ...AppKitNetwork[]] = [mainnet, solana];
 const wagmiAdapter = new WagmiAdapter({
   storage: crStorage({

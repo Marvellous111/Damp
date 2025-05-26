@@ -38,6 +38,24 @@ const disconnectwallet = async() => {
     console.error("Error during disconnect:", error);
   }
 }
+var eth_price_data = "";
+var sol_price_data = "";
+onMounted(async () => {
+  const { data } = await useFetch('/api/prices');
+  console.log("Data is: ", data)
+  const response = data?.value;
+  eth_price_data = response?.eth;
+  sol_price_data = response?.sol
+})
+
+const getprices = async () => {
+  const { data } = await $fetch('/api/prices');
+  const response = data.value;
+  console.log("response is: ", response);
+  eth_price_data = response?.eth;
+  sol_price_data = response?.sol;
+}
+
 </script>
 
 <template>
@@ -57,12 +75,13 @@ const disconnectwallet = async() => {
       <div class="network-price-indicator-wrapper">
         <div class="network-price-indicator">
           <span class="hostgr-regular network-name">ETH</span>
-          <span class="hostgr-medium network-price">$3100.80</span>
+          <span class="hostgr-medium network-price">${{ eth_price_data }}</span>
         </div>
         <div class="network-price-indicator">
           <span class="hostgr-regular network-name">SOL</span>
-          <span class="hostgr-medium network-price">$30.80</span>
+          <span class="hostgr-medium network-price">${{ sol_price_data }}</span>
         </div>
+        <button class="get-prices hostgr-medium" @click="getprices">Get current prices</button>
       </div>
       <!-- <NuxtLink to="/assetcustody/" class="hostgr-medium link" exact-active-class="active-nuxtlink-class">
         Asset custody
@@ -163,6 +182,24 @@ section {
         .network-price {
           font-size: 16px;
         }
+      }
+      .get-prices {
+        border: 1px solid #FFFFFF;
+        width: 200px;
+        height: 38px;
+        background: transparent;
+        outline: 0;
+        padding: 0px 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #FFFFFF;
+        font-size: 15px;
+        transition: 0.1s ease-in;
+      }
+      .get-prices:active {
+        background: #FFFFFF;
+        color: #000000;
       }
     }
   }

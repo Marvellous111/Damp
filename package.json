@@ -19,15 +19,18 @@
     "@nuxt/test-utils": "3.18.0",
     "@nuxt/ui": "3.1.1",
     "@unhead/vue": "^2.0.3",
+    "axios": "^1.9.0",
     "eslint": "^9.0.0",
     "nuxt": "^3.17.3",
     "nuxt-lucide-icons": "1.0.5",
+    "solana-agent-kit": "^2.0.5",
     "typescript": "^5.6.3",
     "vue": "^3.5.13",
     "vue-router": "^4.5.1"
   },
   "packageManager": "pnpm@8.15.5+sha1.a58c038faac410c947dbdb93eb30994037d0fce2",
   "devDependencies": {
+    "@nuxtjs/axios": "^5.13.6",
     "@reown/appkit": "^1.7.6",
     "@reown/appkit-adapter-wagmi": "^1.7.6",
     "@reown/walletkit": "^1.2.4",
