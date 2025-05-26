@@ -64,7 +64,7 @@ export default defineEventHandler(async (event) => {
 
   // Return the prices
   return {
-    //eth: ethPrice,
+    eth: ethPrice,
     sol: solPrice,
   };
 });
