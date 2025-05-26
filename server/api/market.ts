@@ -20,14 +20,14 @@ export default defineEventHandler(async (event) => {
   const paramsEth = {
     chainIndex: '1', // Ethereum
     tokenContractAddress: '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', // ETH
-    // bar: '1m',
-    // limit: '100',
+    bar: '1m',
+    limit: '100',
   };
   const paramsSol = {
-    chainIndex: '66', // Solana
-    tokenContractAddress: '0x382bb369d343125bfb2117af9c149795c6c65c50', // SOL
-    // bar: '1m',
-    // limit: '100',
+    chainIndex: '501', // Solana
+    tokenContractAddress: '11111111111111111111111111111111', // SOL
+    bar: '1m',
+    limit: '100',
   };
 
   // Function to generate the OK-ACCESS-SIGN signature
@@ -64,7 +64,7 @@ export default defineEventHandler(async (event) => {
           timeout: 10000
         }
       );
-      console.log(response.data);
+      console.log("Response for get market data is: ", response.data);
       return response.data.data;
     } catch (error) {
       console.error('Error fetching candlesticks:', error);

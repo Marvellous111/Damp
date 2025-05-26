@@ -49,7 +49,7 @@ export default defineEventHandler(async (event) => {
         body,
         { headers, timeout: 10000 }
       );
-      console.log(response.data)
+      console.log("Response for get price is: ", response.data)
       return response.data.data.price;
     } catch (error) {
       console.error('Error fetching price:', error);
@@ -59,7 +59,7 @@ export default defineEventHandler(async (event) => {
 
   // Fetch prices for ETH and SOL
   const ethPrice = await getPrice('1', '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee');
-  const solPrice = await getPrice('66', '0x382bb369d343125bfb2117af9c149795c6c65c50');
+  const solPrice = await getPrice('501', '11111111111111111111111111111111');
 
 
   // Return the prices
