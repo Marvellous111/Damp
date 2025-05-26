@@ -1,42 +1,78 @@
 import { defineEventHandler } from 'h3';
+import axios from 'axios';
+import crypto from 'crypto';
+import querystring from 'querystring';
 
-export default defineEventHandler(async () => {
+export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig().server;
-  const timestamp = new Date().toISOString();
-  const requestPath = '';
-  const params = {instType: 'SPOT'};
-  const queryString = '?' + new URLSearchParams(params).toString();
-  const stringToSign = timestamp + 'GET' + requestPath + queryString;
-  const signature = '';
+  console.log('Runtime config init');
+  // Retrieve OKX API credentials from environment variables
+  const apiKey = config.okxApiKey;
+  const secretKey = config.okxSecretKey;
+  const passphrase = config.okxPassphrase;
+  // Check if credentials are provided
+  if (!apiKey || !secretKey || !passphrase) {
+    throw new Error('Missing OKX API credentials. Ensure OKX_API_KEY, OKX_SECRET_KEY, and OKX_PASSPHRASE are set.');
+  }
 
-  const headers = {
-    'Content-Type': 'application/json',
-    'OK-ACCESS-KEY': config.okxApiKey,
-    'OK-ACCESS-SIGN': signature,
-    'OK-ACCESS-TIMESTAMP': timestamp,
-    'OK-ACCESS-PASSPHRASE': config.okxPassphrase,
+  // Define the endpoint and default parameters for ETH and SOL
+  const endpoint = '/api/v5/dex/market/candles';
+  const paramsEth = {
+    chainIndex: '1', // Ethereum
+    tokenContractAddress: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2', // ETH
+    bar: '1m',
+    limit: '100',
+  };
+  const paramsSol = {
+    chainIndex: '501', // Solana
+    tokenContractAddress: 'So11111111111111111111111111111111111111111', // SOL
+    bar: '1m',
+    limit: '100',
   };
 
-  try {
-    const response: any = await $fetch(`https://www.okx.com${requestPath}${queryString}`, {
-      method: 'GET',
-      headers
-    });
-    const solUsdc = response.data.find((item: any) => item.instId === "SOL") || {
-      last: '150.25',
-      vol24h: '1000000',
-      change: '2.5',
+  // Function to generate the OK-ACCESS-SIGN signature
+  const generateSignature = (timestamp: string, method: string, requestPath: string) => {
+    const preHash = timestamp + method + requestPath;
+    return crypto.createHmac('sha256', secretKey)
+                 .update(preHash)
+                 .digest('base64');
+  };
+
+  // Function to fetch candlesticks for given parameters
+  const getCandlesticks = async (params: {}) => {
+    const timestamp = new Date().toISOString();
+    const method = 'GET';
+    const queryString = querystring.stringify(params);
+    const requestPath = endpoint + (queryString ? '?' + queryString : '');
+
+    // Generate the signature
+    const sign = generateSignature(timestamp, method, requestPath);
+
+    // Set the headers
+    const headers = {
+      'OK-ACCESS-KEY': apiKey,
+      'OK-ACCESS-SIGN': sign,
+      'OK-ACCESS-PASSPHRASE': passphrase,
+      'OK-ACCESS-TIMESTAMP': timestamp,
     };
 
-    return [{
-      price: parseFloat(solUsdc.last).toFixed(2),
-      volume: parseFloat(solUsdc.vol).toFixed(2),
-      change: parseFloat(solUsdc.change).toFixed(2),
-    }];
-  } catch (err) {
-    throw createError({
-      statusCode: 500,
-      statusMessage: 'Failed to fetch market data'
-    })
-  }
-})
+    try {
+      // Make the GET request to the OKX DEX API
+      const response = await axios.get(`https://web3.okx.com${requestPath}`, { headers });
+      return response.data.data;
+    } catch (error) {
+      console.error('Error fetching candlesticks:', error);
+      throw error;
+    }
+  };
+
+  // Fetch candlesticks for ETH and SOL
+  const ethCandlesticks = await getCandlesticks(paramsEth);
+  const solCandlesticks = await getCandlesticks(paramsSol);
+
+  // Return the candlesticks
+  return {
+    eth: ethCandlesticks,
+    sol: solCandlesticks,
+  };
+});

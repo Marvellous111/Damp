@@ -44,15 +44,14 @@ onMounted(async () => {
   const { data } = await useFetch('/api/prices');
   console.log("Data is: ", data)
   const response = data?.value;
-  //eth_price_data = response?.eth;
+  eth_price_data = response?.eth;
   sol_price_data = response?.sol
 })
 
 const getprices = async () => {
-  const { data } = await $fetch('/api/prices');
-  const response = data.value;
+  const response = await $fetch('/api/prices');
   console.log("response is: ", response);
-  //eth_price_data = response?.eth;
+  eth_price_data = response?.eth;
   sol_price_data = response?.sol;
 }
 
