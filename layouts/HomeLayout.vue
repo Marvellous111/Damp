@@ -184,11 +184,11 @@ section {
       }
       .get-prices {
         border: 1px solid #FFFFFF;
-        width: 200px;
+        width: 222px;
         height: 38px;
+        padding: 0px 10px;
         background: transparent;
         outline: 0;
-        padding: 0px 10px;
         display: flex;
         align-items: center;
         justify-content: center;

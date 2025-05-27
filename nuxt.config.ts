@@ -12,6 +12,9 @@ export default defineNuxtConfig({
       reown_project_id: process.env.NUXT_PUBLIC_REOWN_PROJECT_ID
     },
     server: {
+      solanaSecretPrivateKey: process.env.NUXT_SERVER_SOLANA_PRIVATE_KEY,
+      solanaRpc: process.env.RPC_SOLANA_URL,
+      antropicApiKey: process.env.ANTHROPIC_DAMP_API_KEY,
       okxApiKey: process.env.OKX_DAMP_API_KEY,
       okxSecretKey: process.env.OKX_DAMP_API_KEY_SECRET,
       okxPassphrase: process.env.OKX_DAMP_API_PASSPHRASE,

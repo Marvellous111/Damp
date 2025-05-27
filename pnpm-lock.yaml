@@ -5,6 +5,18 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@langchain/anthropic':
+    specifier: ^0.3.21
+    version: 0.3.21(@langchain/core@0.3.57)
+  '@langchain/core':
+    specifier: ^0.3.57
+    version: 0.3.57
+  '@langchain/langgraph':
+    specifier: ^0.2.73
+    version: 0.2.73(@langchain/core@0.3.57)(react@18.3.1)
+  '@langchain/openai':
+    specifier: ^0.5.11
+    version: 0.5.11(@langchain/core@0.3.57)(ws@7.5.10)
   '@nuxt/content':
     specifier: 3.5.1
     version: 3.5.1(typescript@5.8.3)
@@ -35,6 +47,24 @@ dependencies:
   axios:
     specifier: ^1.9.0
     version: 1.9.0
+  bs58:
+    specifier: ^6.0.0
+    version: 6.0.0
+  chart.js:
+    specifier: ^4.4.9
+    version: 4.4.9
+  chartjs-adapter-date-fns:
+    specifier: ^3.0.0
+    version: 3.0.0(chart.js@4.4.9)(date-fns@4.1.0)
+  chartjs-chart-financial:
+    specifier: ^0.2.1
+    version: 0.2.1(chart.js@4.4.9)
+  date-fns:
+    specifier: ^4.1.0
+    version: 4.1.0
+  dotenv:
+    specifier: ^16.5.0
+    version: 16.5.0
   eslint:
     specifier: ^9.0.0
     version: 9.26.0
@@ -186,6 +216,20 @@ packages:
 
   /@antfu/utils@8.1.1:
     resolution: {integrity: sha512-Mex9nXf9vR6AhcXmMrlz/HVgYYZpVGJ6YlPgwl7UnaFpnshXs6EK/oa5Gpf3CzENMjkvEx2tQtntGnb7UtSTOQ==}
+    dev: false
+
+  /@anthropic-ai/sdk@0.39.0:
+    resolution: {integrity: sha512-eMyDIPRZbt1CCLErRCi3exlAvNkBtRe+kW5vvJyef93PmNr/clstYgHhtvmkxN82nlKgzyGPCyGxrm0JQ1ZIdg==}
+    dependencies:
+      '@types/node': 18.19.102
+      '@types/node-fetch': 2.6.12
+      abort-controller: 3.0.0
+      agentkeepalive: 4.6.0
+      form-data-encoder: 1.7.2
+      formdata-node: 4.4.1
+      node-fetch: 2.7.0
+    transitivePeerDependencies:
+      - encoding
     dev: false
 
   /@apidevtools/json-schema-ref-parser@11.9.3:
@@ -1148,6 +1192,10 @@ packages:
     resolution: {integrity: sha512-4JQNk+3mVzK3xh2rqd6RB4J46qUR19azEHBneZyTZM+c456qOrbbM/5xcR8huNCCcbVt7+UmizG6GuUvPvKUYg==}
     dev: false
 
+  /@kurkle/color@0.3.4:
+    resolution: {integrity: sha512-M5UknZPHRu3DEDWoipU6sE8PdkZ6Z/S+v4dD+Ke8IaNlpdSQah50lz1KtcFBa2vsdOnwbbnxJwVM4wty6udA5w==}
+    dev: false
+
   /@kwsites/file-exists@1.1.1:
     resolution: {integrity: sha512-m9/5YGR18lIwxSFDwfE3oA7bWuq9kdau6ugN4H2rJeyhFQZcG9AgSHkQtSD15a8WvTgfz9aikZMrKPHvbpqFiw==}
     dependencies:
@@ -1158,6 +1206,21 @@ packages:
 
   /@kwsites/promise-deferred@1.1.1:
     resolution: {integrity: sha512-GaHYm+c0O9MjZRu0ongGBRbinu8gVAMd2UZjji6jVmqKtZluZnptXGWhz1E8j8D2HJ3f/yMxKAUC0b+57wncIw==}
+    dev: false
+
+  /@langchain/anthropic@0.3.21(@langchain/core@0.3.57):
+    resolution: {integrity: sha512-iyVZ9PHcNbABVzWFWtolcDUqHYCEkl1yypRYXE98tTPiNhGo6g/MgKky96TEcOnJ0VNHD6qlzo9LhQl87OplvA==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@langchain/core': '>=0.3.48 <0.4.0'
+    dependencies:
+      '@anthropic-ai/sdk': 0.39.0
+      '@langchain/core': 0.3.57
+      fast-xml-parser: 4.5.3
+      zod: 3.24.4
+      zod-to-json-schema: 3.24.5(zod@3.24.4)
+    transitivePeerDependencies:
+      - encoding
     dev: false
 
   /@langchain/core@0.3.57:
@@ -1178,6 +1241,70 @@ packages:
       zod-to-json-schema: 3.24.5(zod@3.24.4)
     transitivePeerDependencies:
       - openai
+    dev: false
+
+  /@langchain/langgraph-checkpoint@0.0.17(@langchain/core@0.3.57):
+    resolution: {integrity: sha512-6b3CuVVYx+7x0uWLG+7YXz9j2iBa+tn2AXvkLxzEvaAsLE6Sij++8PPbS2BZzC+S/FPJdWsz6I5bsrqL0BYrCA==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@langchain/core': '>=0.2.31 <0.4.0'
+    dependencies:
+      '@langchain/core': 0.3.57
+      uuid: 10.0.0
+    dev: false
+
+  /@langchain/langgraph-sdk@0.0.78(@langchain/core@0.3.57)(react@18.3.1):
+    resolution: {integrity: sha512-skkUDmEhClWzlsr8jRaS1VpXVBISm5OFd0MUtS1jKRL5pn08K+IJRvHnlzgum9x7Dste9KXGcIGVoR7cNKJQrw==}
+    peerDependencies:
+      '@langchain/core': '>=0.2.31 <0.4.0'
+      react: ^18 || ^19
+    peerDependenciesMeta:
+      '@langchain/core':
+        optional: true
+      react:
+        optional: true
+    dependencies:
+      '@langchain/core': 0.3.57
+      '@types/json-schema': 7.0.15
+      p-queue: 6.6.2
+      p-retry: 4.6.2
+      react: 18.3.1
+      uuid: 9.0.1
+    dev: false
+
+  /@langchain/langgraph@0.2.73(@langchain/core@0.3.57)(react@18.3.1):
+    resolution: {integrity: sha512-vw+IXV2Q7x/QaykNj3VE/Ak3aPlst3spkpM6zYtqwGkQlhLZU4Lb8PHHPjqNNYHSdOTDj9x4jIRUPZArGHx9Aw==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@langchain/core': '>=0.2.36 <0.3.0 || >=0.3.40 < 0.4.0'
+      zod-to-json-schema: ^3.x
+    peerDependenciesMeta:
+      zod-to-json-schema:
+        optional: true
+    dependencies:
+      '@langchain/core': 0.3.57
+      '@langchain/langgraph-checkpoint': 0.0.17(@langchain/core@0.3.57)
+      '@langchain/langgraph-sdk': 0.0.78(@langchain/core@0.3.57)(react@18.3.1)
+      uuid: 10.0.0
+      zod: 3.24.4
+    transitivePeerDependencies:
+      - react
+    dev: false
+
+  /@langchain/openai@0.5.11(@langchain/core@0.3.57)(ws@7.5.10):
+    resolution: {integrity: sha512-DAp7x+NfjSqDvKVMle8yb85nzz+3ctP7zGJaeRS0vLmvkY9qf/jRkowsM0mcsIiEUKhG/AHzWqvxbhktb/jJ6Q==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@langchain/core': '>=0.3.48 <0.4.0'
+    dependencies:
+      '@langchain/core': 0.3.57
+      js-tiktoken: 1.0.20
+      openai: 4.103.0(ws@7.5.10)(zod@3.24.4)
+      zod: 3.24.4
+      zod-to-json-schema: 3.24.5(zod@3.24.4)
+    transitivePeerDependencies:
+      - encoding
+      - ws
     dev: false
 
   /@lit-labs/ssr-dom-shim@1.3.0:
@@ -4520,6 +4647,13 @@ packages:
     resolution: {integrity: sha512-GsCCIZDE/p3i96vtEqx+7dBUGXrc7zeSK3wwPHIaRThS+9OhWIXRqzs4d6k1SVU8g91DrNRWxWUGhp5KXQb2VA==}
     requiresBuild: true
 
+  /@types/node-fetch@2.6.12:
+    resolution: {integrity: sha512-8nneRWKCg3rMtF69nLQJnOYUcbafYeFSjqkw3jCRLsqkWFlHaoQrr5mXmofFGOx3DKn7UfmBMyov8ySvLRVldA==}
+    dependencies:
+      '@types/node': 22.15.17
+      form-data: 4.0.2
+    dev: false
+
   /@types/node@12.20.55:
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
     dev: false
@@ -4528,7 +4662,6 @@ packages:
     resolution: {integrity: sha512-8+SHxopyHeI9xdylfts948LTTr7ZOCSQWMEEDS1qmFIv1kdl03YoMcy3H2NhmxeozCxJiTw6al1h5PAp9h0a5w==}
     dependencies:
       undici-types: 5.26.5
-    dev: true
 
   /@types/node@22.15.17:
     resolution: {integrity: sha512-wIX2aSZL5FE+MR0JlvF87BNVrtFWf6AE6rxSE9X7OwnVvoyCQjpzSRJ+M87se/4QCkCiebQAqrJ0y6fwIyi7nw==}
@@ -7421,6 +7554,31 @@ packages:
     resolution: {integrity: sha512-iBZ4F4wRbyORVsu0jPV7gXkOsGYjGHPmAyv+HiHG8gi5PtC9KI2j1+v8/tlibRvjoWX027ypmG/n0HtO5t7unw==}
     dev: false
 
+  /chart.js@4.4.9:
+    resolution: {integrity: sha512-EyZ9wWKgpAU0fLJ43YAEIF8sr5F2W3LqbS40ZJyHIner2lY14ufqv2VMp69MAiZ2rpwxEUxEhIH/0U3xyRynxg==}
+    engines: {pnpm: '>=8'}
+    dependencies:
+      '@kurkle/color': 0.3.4
+    dev: false
+
+  /chartjs-adapter-date-fns@3.0.0(chart.js@4.4.9)(date-fns@4.1.0):
+    resolution: {integrity: sha512-Rs3iEB3Q5pJ973J93OBTpnP7qoGwvq3nUnoMdtxO+9aoJof7UFcRbWcIDteXuYd1fgAvct/32T9qaLyLuZVwCg==}
+    peerDependencies:
+      chart.js: '>=2.8.0'
+      date-fns: '>=2.0.0'
+    dependencies:
+      chart.js: 4.4.9
+      date-fns: 4.1.0
+    dev: false
+
+  /chartjs-chart-financial@0.2.1(chart.js@4.4.9):
+    resolution: {integrity: sha512-RI3zrszyf2YdW7ME8I5XDsicy6YaU+uA1XZmGddR3rdcQlGf4pSgGFK8O0PWPO5Szdc8wZ8qpns++yib6pWBaw==}
+    peerDependencies:
+      chart.js: ^4.0.0
+    dependencies:
+      chart.js: 4.4.9
+    dev: false
+
   /checkpoint-store@1.1.0:
     resolution: {integrity: sha512-J/NdY2WvIx654cc6LWSq/IYFFCUf75fFTgwzFnmbqyORH4MwgiQCgswLLKBGzmsyTI5V7i5bp/So6sMbDWhedg==}
     dependencies:
@@ -8021,6 +8179,10 @@ packages:
     dependencies:
       '@babel/runtime': 7.27.1
     dev: true
+
+  /date-fns@4.1.0:
+    resolution: {integrity: sha512-Ukq0owbQXxa/U3EGtsdVBkR1w7KOQ5gIBqdH2hkvknzZPYvBxb/aa6E8L7tmjFtkwZBu3UXBbjIgPo/Ez4xaNg==}
+    dev: false
 
   /dayjs@1.11.13:
     resolution: {integrity: sha512-oaMBel6gjolK862uaPQOVTA7q3TZhuSvuMQAAglQDOWYO9A91IrAOUJEyKVlqJlHE0vq5p5UXxzdPfMH/x6xNg==}
@@ -9483,6 +9645,13 @@ packages:
     resolution: {integrity: sha512-wpYMUmFu5f00Sm0cj2pfivpmawLZ0NKdviQ4w9zJeR8JVtOpOxHmLaJuj0vxvGqMJQWyP/COUkF75/57OKyRag==}
     dev: false
 
+  /fast-xml-parser@4.5.3:
+    resolution: {integrity: sha512-RKihhV+SHsIUGXObeVy9AXiBbFwkVk7Syp8XgwN5U3JV416+Gwp/GO9i0JYKmikykgz/UHRrrV4ROuZEo/T0ig==}
+    hasBin: true
+    dependencies:
+      strnum: 1.1.2
+    dev: false
+
   /fastestsmallesttextencoderdecoder@1.0.22:
     resolution: {integrity: sha512-Pb8d48e+oIuY4MaM64Cd7OW1gt4nxCHs7/ddPPZ/Ic3sg8yVGM7O9wDvZ7us6ScaUupzM+pfBolwtYhN1IxBIw==}
     dev: false
@@ -9687,6 +9856,10 @@ packages:
     resolution: {integrity: sha512-j0KLYPhm6zeac4lz3oJ3o65qvgQCcPubiyotZrXqEaG4hNagNYO8qdlUrX5vwqv9ohqeT/Z3j6+yW067yWWdUw==}
     dev: true
 
+  /form-data-encoder@1.7.2:
+    resolution: {integrity: sha512-qfqtYan3rxrnCk1VYaA4H+Ms9xdpPqvLZa6xmMgFvhO32x7/3J/ExcTd6qpxM0vH2GdMI+poehyBZvqfMTto8A==}
+    dev: false
+
   /form-data@2.3.3:
     resolution: {integrity: sha512-1lLKB2Mu3aGP1Q/2eCOx0fNbRMe7XdwktwOruhfqqd0rIJWwN4Dh+E3hrPSlDCXnSR7UtZ1N38rVXm+6+MEhJQ==}
     engines: {node: '>= 0.12'}
@@ -9704,6 +9877,14 @@ packages:
       combined-stream: 1.0.8
       es-set-tostringtag: 2.1.0
       mime-types: 2.1.35
+    dev: false
+
+  /formdata-node@4.4.1:
+    resolution: {integrity: sha512-0iirZp3uVDjVGt9p49aTaqjk84TrglENEDuqfdlZQ1roC9CWlPk6Avf8EEnZNcAqPonwkG35x4n3ww/1THYAeQ==}
+    engines: {node: '>= 12.20'}
+    dependencies:
+      node-domexception: 1.0.0
+      web-streams-polyfill: 4.0.0-beta.3
     dev: false
 
   /formdata-polyfill@4.0.10:
@@ -12826,6 +13007,31 @@ packages:
       is-wsl: 2.2.0
     dev: false
 
+  /openai@4.103.0(ws@7.5.10)(zod@3.24.4):
+    resolution: {integrity: sha512-eWcz9kdurkGOFDtd5ySS5y251H2uBgq9+1a2lTBnjMMzlexJ40Am5t6Mu76SSE87VvitPa0dkIAp75F+dZVC0g==}
+    hasBin: true
+    peerDependencies:
+      ws: ^8.18.0
+      zod: ^3.23.8
+    peerDependenciesMeta:
+      ws:
+        optional: true
+      zod:
+        optional: true
+    dependencies:
+      '@types/node': 18.19.102
+      '@types/node-fetch': 2.6.12
+      abort-controller: 3.0.0
+      agentkeepalive: 4.6.0
+      form-data-encoder: 1.7.2
+      formdata-node: 4.4.1
+      node-fetch: 2.7.0
+      ws: 7.5.10
+      zod: 3.24.4
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
   /optionator@0.9.4:
     resolution: {integrity: sha512-6IpQ7mKUxRcZNLIObR0hz7lxsapSSIYNZJwXPGeF0mTVqGKFIXj1DQcMoT22S3ROcLyY/rz0PWaWZ9ayWmad9g==}
     engines: {node: '>= 0.8.0'}
@@ -15044,6 +15250,10 @@ packages:
     dependencies:
       js-tokens: 9.0.1
 
+  /strnum@1.1.2:
+    resolution: {integrity: sha512-vrN+B7DBIoTTZjnPNewwhx6cBA/H+IS7rfW68n7XxC1y7uoiGQBxaKzqucGUgavX15dJgiGztLJ8vxuEzwqBdA==}
+    dev: false
+
   /structured-clone-es@1.0.0:
     resolution: {integrity: sha512-FL8EeKFFyNQv5cMnXI31CIMCsFarSVI2bF0U0ImeNE3g/F1IvJQyqzOXxPBRXiwQfyBTlbNe88jh1jFW0O/jiQ==}
     dev: false
@@ -15451,7 +15661,6 @@ packages:
 
   /undici-types@5.26.5:
     resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
-    dev: true
 
   /undici-types@6.19.8:
     resolution: {integrity: sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw==}
@@ -16006,7 +16215,6 @@ packages:
     resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
     hasBin: true
     requiresBuild: true
-    dev: true
 
   /valibot@1.1.0(typescript@5.8.3):
     resolution: {integrity: sha512-Nk8lX30Qhu+9txPYTwM0cFlWLdPFsFr6LblzqIySfbZph9+BFsAHsNvHOymEviUepeIW6KFHzpX8TKhbptBXXw==}
@@ -16534,6 +16742,11 @@ packages:
   /web-streams-polyfill@3.3.3:
     resolution: {integrity: sha512-d2JWLCivmZYTSIoge9MsgFCZrt571BikcWGYkjC1khllbTeDlGqZ2D8vD8E/lJa8WGWbb7Plm8/XJYV7IJHZZw==}
     engines: {node: '>= 8'}
+    dev: false
+
+  /web-streams-polyfill@4.0.0-beta.3:
+    resolution: {integrity: sha512-QW95TCTaHmsYfHDybGMwO5IJIM93I/6vTRk+daHTWFPhwh+C8Cg7j7XyKrwrj8Ib6vYXe0ocYNrmzY4xAAN6ug==}
+    engines: {node: '>= 14'}
     dev: false
 
   /web3-provider-engine@16.0.1(@babel/core@7.27.1):

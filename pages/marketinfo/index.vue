@@ -1,38 +1,66 @@
 <script lang="ts" setup>
 import { Expand } from 'lucide-vue-next';
+import { Chart, LineController, PointElement, LineElement, Tooltip, Legend } from 'chart.js';
+import { CandlestickElement } from 'chartjs-chart-financial';
+import { gsap } from 'gsap';
 
 definePageMeta({
   layout: 'home-layout'
 })
-
 useSeoMeta({
   title: 'Market info | Damp'
 })
 
-var marketData = ref<[{}] | null>(null);
-const error = ref<string | null>(null);
+Chart.register(LineController, PointElement, LineElement, Tooltip, Legend, CandlestickElement);
 
+const toggleFullScreen = (network: string) => {}
+
+
+var solanaData = ref([]);
+var ethData = ref([]);
+
+const refresh = async() => {
+  const response: {} = await $fetch('/api/market');
+  solanaData.value = response.sol;
+  ethData.value = response.eth;
+}
+
+var responseData: {} = {};
+onMounted(async () => {
+  const response: {} = await useFetch('/api/market');
+  responseData = response;
+  solanaData.value = responseData.sol;
+  ethData.value = responseData.eth;
+
+  console.log("Solana data is:", solanaData);
+  console.log("Eth data is: ", ethData);
+})
+;
+var isSolanaFullScreen = true;
+var isethereumFullScreen = true;
 
 </script>
 
 <template>
   <main>
     <section class="graph-power-wrapper">
-      <div class="graph-container">
+      <div class="graph-container" :class="{ 'full-screen': isSolanaFullScreen }">
         <div class="title-magnify-button-container">
           <span class="hostgr-medium">SOL/USDC</span>
-          <button>
+          <button @click="toggleFullScreen('solana')">
             <Expand :size="16" />
           </button>
         </div>
+        <canvas ref="solanaChartCanvas"></canvas>
       </div>
-      <div class="graph-container">
+      <div class="graph-container" :class="{ 'full-screen': isEthereumFullScreen }">
         <div class="title-magnify-button-container">
           <span class="hostgr-medium">ETH/USDC</span>
-          <button>
+          <button @click="toggleFullScreen('ethereum')">
             <Expand :size="16" />
           </button>
         </div>
+        <canvas ref="ethereumChartCanvas"></canvas>
       </div>
     </section>
     <section class="volatility-volume-fees-wrapper">
@@ -66,6 +94,12 @@ main {
       flex: 0.49;
       height: 330px;
       padding: 10px;
+      display: flex;
+      flex-direction: column;
+      row-gap: 10px;
+      canvas {
+        border: 1px solid white;
+      }
       .title-magnify-button-container {
         display: flex;
         width: 100%;
@@ -84,6 +118,11 @@ main {
           color: #FFFFFF;
         }
       }
+    }
+    .full-screen {
+      background: transparent;
+      border-radius: 0;
+      box-shadow: none;
     }
     .power-container {
       width: 380px;
